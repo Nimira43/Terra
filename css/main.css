@@ -162,3 +162,190 @@ body {
     0 0 14px rgba(54, 255, 107, 0.35);
   padding: 18px 22px;
 }
+
+.term-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 19px;
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid var(--phosphor-dim);
+  padding-bottom: 8px;
+  flex: 0 0 auto;
+}
+
+.blink {
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.term-footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  letter-spacing: 0.05em;
+  opacity: 0.85;
+  border-top: 1px solid var(--phosphor-dim);
+  padding-top: 8px;
+  flex: 0 0 auto;
+}
+
+.globe-stage {
+  flex: 1 1 auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 700px;
+}
+
+.ground-glow {
+  position: absolute;
+  bottom: -6%;
+  width: 70%;
+  height: 14%;
+  left: 15%;
+  background:
+    radial-gradient(ellipse at center,
+      rgba(54, 255, 107, 0.35),
+      transparent 70%);
+  filter: blur(2px);
+  border-radius: 50%;
+}
+
+.globe-wrap {
+  position: relative;
+  width: min(60vmin, 300px);
+  height: min(60vmin, 300px);
+  transform-style: preserve-3d;
+}
+
+.ambient-glow {
+  position: absolute;
+  inset: -20%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 50%,
+      rgba(54, 255, 107, 0.22),
+      transparent 65%);
+  animation: pulseGlow 3.4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes pulseGlow {
+
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(0.97);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.03);
+  }
+}
+
+.core-dot {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 6px;
+  height: 6px;
+  top: 50%;
+  left: 50%;
+  margin-top: -3px;
+  margin-left: -3px;
+  background: var(--phosphor-glow);
+  border-radius: 50%;
+  box-shadow: 0 0 12px 4px rgba(54, 255, 107, 0.8);
+  pointer-events: none;
+}
+
+.globe {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  animation: spinGlobe 14s linear infinite;
+}
+
+@keyframes spinGlobe {
+  from {
+    transform: rotateY(0deg) rotateX(-12deg);
+  }
+
+  to {
+    transform: rotateY(360deg) rotateX(-12deg);
+  }
+}
+
+.ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  border: 1px solid var(--phosphor-mid);
+  box-shadow: 0 0 6px rgba(54, 255, 107, 0.25);
+}
+
+.ring.meridian {
+  border-color: var(--phosphor);
+  opacity: 0.55;
+}
+
+.ring.parallel {
+  border-color: var(--phosphor-mid);
+  opacity: 0.4;
+}
+
+.ring.equator {
+  border-color: var(--phosphor-glow);
+  opacity: 0.85;
+}
+
+.sparks-layer {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  pointer-events: none;
+}
+
+.spark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 9px;
+  height: 3px;
+  border-radius: 2px;
+  background:
+    linear-gradient(90deg,
+      var(--spark),
+      transparent);
+  box-shadow:
+    0 0 6px 1px rgba(234, 255, 240, 0.9),
+    0 0 14px rgba(54, 255, 107, 0.6);
+  animation-name: sparkFly;
+  animation-timing-function: cubic-bezier(.2, .7, .3, 1);
+  animation-fill-mode: forwards;
+}
+
+@keyframes sparkFly {
+  0% {
+    transform: translate(-50%, -50%) rotate(var(--ang)) translateX(var(--start)) scaleX(0.4);
+    opacity: 1;
+  }
+
+  12% {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(var(--ang)) translateX(calc(var(--start) + var(--dist) * 0.18)) scaleX(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(var(--ang)) translateX(calc(var(--start) + var(--dist))) scaleX(0.3);
+  }
+}
