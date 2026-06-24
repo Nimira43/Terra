@@ -349,3 +349,157 @@ body {
     transform: translate(-50%, -50%) rotate(var(--ang)) translateX(calc(var(--start) + var(--dist))) scaleX(0.3);
   }
 }
+
+.scanlines {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  background: repeating-linear-gradient(to bottom,
+      rgba(0, 0, 0, 0.0) 0px,
+      rgba(0, 0, 0, 0.18) 1px,
+      rgba(0, 0, 0, 0.0) 2px,
+      rgba(0, 0, 0, 0.0) 3px);
+}
+
+.rolling-scan {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 26%;
+  z-index: 6;
+  pointer-events: none;
+  background: linear-gradient(to bottom,
+      transparent 0%,
+      rgba(54, 255, 107, 0.07) 50%,
+      transparent 100%);
+  animation: rollScan 6s linear infinite;
+}
+
+@keyframes rollScan {
+  0% {
+    top: -30%;
+  }
+
+  100% {
+    top: 110%;
+  }
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 7;
+  pointer-events: none;
+  box-shadow: inset 0 0 90px 24px rgba(0, 0, 0, 0.85);
+  background:
+    radial-gradient(ellipse at center,
+      transparent 55%,
+      rgba(0, 0, 0, 0.55) 100%);
+}
+
+.flicker-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  pointer-events: none;
+  background: rgba(54, 255, 107, 0.02);
+  animation: flicker 4.2s infinite;
+  mix-blend-mode: overlay;
+}
+
+@keyframes flicker {
+
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+
+  6% {
+    opacity: 0.9;
+  }
+
+  8% {
+    opacity: 0.3;
+  }
+
+  20% {
+    opacity: 0.5;
+  }
+
+  45% {
+    opacity: 0.8;
+  }
+
+  46% {
+    opacity: 0.35;
+  }
+
+  72% {
+    opacity: 0.6;
+  }
+
+  73% {
+    opacity: 0.95;
+  }
+
+  74% {
+    opacity: 0.4;
+  }
+}
+
+.noise-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image:
+    radial-gradient(circle,
+      #fff 1px,
+      transparent 1px);
+  background-size: 3px 3px;
+  animation: noiseShift 0.4s steps(2) infinite;
+}
+
+@keyframes noiseShift {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(-2px, 1px);
+  }
+
+  100% {
+    transform: translate(1px, -1px);
+  }
+}
+
+@media (max-width: 480px) {
+
+  .term-header,
+  .term-footer {
+    font-size: 13px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .globe {
+    animation-duration: 60s;
+  }
+
+  .screen-curve {
+    animation: none;
+  }
+
+  .flicker-overlay,
+  .noise-overlay,
+  .rolling-scan {
+    animation: none;
+  }
+
+  .ambient-glow {
+    animation: none;
+  }
+}
