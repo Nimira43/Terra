@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="./images/TheFavicon.png">
+  <link rel="stylesheet" href="./css/main.cs">
+  <title>Terra</title>
+</head>
+<body>
+  <div class="room">
+    <div class="crt-monitor">
+      <div class="bezel">
+        <div class="bezel-label">
+          MODEL T9&nbsp;&middot;&nbsp;ORBITAL UNIT
+        </div>
+        <div class="screen">
+          <div class="screen-curve">
+            <div class="screen-content">
+              <header class="term-header">
+                <span class="term-title">
+                  SYS://GLOBE.NET
+                </span>
+                <span class="term-sub">
+                  ORBITAL TRACKING&nbsp;
+                  <span class="blink">_</span>
+                </span>
+              </header>
+              <div class="globe-stage">
+                <div 
+                  class="globe-wrap" 
+                  id="globeWrap"
+                >
+                  <div class="ambient-glow"></div>
+                  <div class="globe" id="globe"></div>
+                  <div class="core-dot"></div>
+                  <div class="sparks-layer" id="sparksLayer"></div>
+                </div>
+                <div class="ground-glow"></div>
+              </div>
+              <footer class="term-footer">
+                <div 
+                  class="readout" 
+                  id="readout1"
+                >
+                  LAT 00.0&deg;&nbsp; LON 000.0&deg;
+                </div>
+                <div 
+                  class="readout" 
+                  id="readout2"
+                >
+                  ROT 000&deg;/SEC
+                </div>
+                <div 
+                  class="readout" 
+                  id="readout3"
+                >
+                  SIG &#9608;&#9608;&#9608;&#9608;&#9612;&#9618;&#9617;
+                </div>
+              </footer>
+            </div>
+            <div class="scanlines"></div>
+            <div class="rolling-scan"></div>
+            <div class="vignette"></div>
+            <div class="flicker-overlay"></div>
+            <div class="noise-overlay"></div>
+          </div>
+        </div>
+        <div 
+          class="bezel-vents" 
+          aria-hidden="true"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+      <div class="stand"></div>
+      <div class="stand-base"></div>
+    </div>
+  </div>
+  <script src="./js/main.js"></script>
+</body>
+</html>
